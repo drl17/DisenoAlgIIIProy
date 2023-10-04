@@ -1,6 +1,6 @@
 #Esta es la versión final del aplicativo
 
-#Importamos las libreriar para el diseño de aplicativos en web, para invocar datos aleatorios y las ventanas con mensajes
+#Importamos las librerías para el diseño de aplicativos en web, para invocar datos aleatorios y las ventanas con mensajes
 import tkinter
 import random
 from tkinter import messagebox
