@@ -46,8 +46,45 @@ numero=entero
     Boton_CerrarVentanaGanador=tkinter.Button(Ventana_Ganador, text="Cerrar", command=Ventana_Ganador.destroy)
     Boton_CerrarVentanaGanador.pack()"""
 
+Contador_Intentos=0
 
 def comprobar():
+    global Contador_Intentos
+    Contador_Intentos += 1
+    if Contador_Intentos <= 3:
+        a = int(Caja_Texto.get())
+        if a == ganador:
+            messagebox.showinfo("¡Ganaste!", "Has derrotado al acertijo")
+            Interfaz.destroy()
+        elif a > ganador:
+            messagebox.showwarning('Fallaste', f'Te quedan {3 - Contador_Intentos} intentos. Tu intento ha sido alto.')
+        else:
+            messagebox.showwarning('Fallaste', f'Te quedan {3 - Contador_Intentos} intentos. Tu intento ha sido bajo.')
+    if Contador_Intentos == 3:
+        messagebox.showerror("Game Over", "Has agotado todos tus intentos.")
+        Interfaz.destroy()
+
+"""Contador_Intentos=0
+
+def comprobar():
+    numero_random=ganador
+    a=int(Caja_Texto.get())
+    for Intentos in (1,4):
+        if a == numero_random:
+            #print(f"Adivinaste. El número secreto ganador era: {ganador}")
+            messagebox.showinfo("Ganaste","Derrotaste al acertijo", command=Interfaz.destroy)
+        elif a > numero_random:
+            #print("vuelve a intentarlo")
+            messagebox.showwarning(f'¡Tienes {(3-Contador_Intentos)} intentos!', "Fallaste, Tu intento ha sido alto")
+        elif a < numero_random:
+            #print("vuelve a intentarlo")
+            messagebox.showwarning(f'¡Tienes {(3-Contador_Intentos)} intentos!', "Fallaste, tu intento es bajo")
+        else:
+            messagebox.showerror("Game Over", "Has perdido todos los intentos", command=Interfaz.destroy)
+Contador_Intentos+=1"""
+
+
+"""def comprobar():
     numero_random=ganador
     a=int(Caja_Texto.get())
     if numero_random == a:
@@ -55,7 +92,7 @@ def comprobar():
         messagebox.showinfo("Ganaste","Derrotaste al acertijo")
     else:
         #print("vuelve a intentarlo")
-        messagebox.showwarning("Atención", "Sigue intentando")
+        messagebox.showwarning("Atención", "Sigue intentando")"""
 
 Boton_Comprobar=tkinter.Button(Interfaz, text="Comprobar", command=comprobar)
 Boton_Comprobar.place(x=100, y=300)
